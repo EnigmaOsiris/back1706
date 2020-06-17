@@ -1,0 +1,39 @@
+type User {
+  userId: ID!
+  name: String
+  status: String
+  employeeNumber: String
+  groups: [Group] @relation(name: "BELONGS", direction: "OUT")
+  department: [Department] @relation(name: "WORKS", direction: "OUT")
+  leader: [Department] @relation(name: "HEADER", direction: "OUT")
+  moderator: [Group] @relation(name: "MODERATOR", direction: "OUT")
+}
+
+type Group {
+  groupId: ID!
+  name: String
+  status: String
+  members: [User] @relation(name: "BELONGS", direction: "IN")
+  moderator: User @relation(name: "MODERATOR", direction: "IN")
+  createdBy: User @relation(name: "CREATED", direction: "IN")
+  aprobed: User @relation(name: "APPROVED", direction: "IN")
+}
+
+type Department {
+  departmentId: ID!
+  name: String
+  status: String
+  director: User @relation(name: "HEADER", direction: "IN")
+  members: [User] @relation(name: "WORKS", direction: "IN")
+}
+
+type Query {
+  allUser: [User]
+  userByname(search: String!): [User]
+  userById(id: ID!): User
+  user(id:ID, name:String,status: String!,employeeNumber: String):[User]
+}
+
+
+
+#! indicate the param is required
