@@ -7,7 +7,7 @@ export const resolvers={
         // console.log(context);
         return neo4jgraphql(obj,params, context, resolveInfo);
       },
-      user:(obj, params, ctx, resolveInfo)=>{
+      UserBy:(obj, params, ctx, resolveInfo)=>{
         return neo4jgraphql(obj, params, ctx, resolveInfo)
       }
     }

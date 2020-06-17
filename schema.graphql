@@ -30,8 +30,8 @@ type Department {
 type Query {
   allUser: [User]
   userByname(search: String!): [User]
-  userById(id: ID!): User
-  user(id:ID, name:String,status: String!,employeeNumber: String):[User]
+  userById(id: ID): User
+  UserBy(userId: ID, name: String,status: String,employeeNumber: String):[User]
 }
 
 
